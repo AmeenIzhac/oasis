@@ -153,7 +153,7 @@ function App() {
                     <div key={module.id} className="group cursor-pointer">
                       <div className="aspect-video rounded-lg mb-4 overflow-hidden group-hover:shadow-lg transition-all duration-300">
                         <img 
-                          src={`/mod${module.id === 2 ? '2a' : module.id === 6 ? '6a' : module.id}.${module.id === 1 ? 'png' : module.id === 2 ? 'png' : module.id === 3 ? 'png' : module.id === 4 ? 'jpeg' : module.id === 5 ? 'jpg' : 'webp'}`}
+                          src={`/images/mod${module.id === 2 ? '2a' : module.id === 6 ? '6a' : module.id}.${module.id === 1 ? 'png' : module.id === 2 ? 'png' : module.id === 3 ? 'png' : module.id === 4 ? 'jpeg' : module.id === 5 ? 'jpg' : 'webp'}`}
                           alt={module.title}
                           className={`w-full h-full ${module.id === 1 ? 'object-contain' : 'object-cover'}`}
                         />
@@ -221,7 +221,7 @@ function App() {
                   </p>
                   <div className="aspect-video rounded-lg overflow-hidden mb-16">
                     <img 
-                      src="/balliolnice.jpg" 
+                      src="/images/balliolnice.jpg" 
                       alt="Balliol College Exterior" 
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
@@ -234,14 +234,14 @@ function App() {
                   <div className="grid md:grid-cols-2 gap-6 mb-16">
                     <div className="aspect-video rounded-lg overflow-hidden">
                       <img 
-                        src="/room1.jpg" 
+                        src="/images/room1.jpg" 
                         alt="Student Room 1" 
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                       />
                     </div>
                     <div className="aspect-video rounded-lg overflow-hidden">
                       <img 
-                        src="/room2.jpg" 
+                        src="/images/room2.jpg" 
                         alt="Student Room 2" 
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                       />
@@ -254,7 +254,7 @@ function App() {
                   </p>
                   <div className="aspect-video rounded-lg overflow-hidden mb-16">
                     <img 
-                      src="/dinnerhall.jpg" 
+                      src="/images/dinnerhall.jpg" 
                       alt="Dining Hall" 
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
@@ -266,7 +266,7 @@ function App() {
                   </p>
                   <div className="aspect-video rounded-lg overflow-hidden">
                     <img 
-                      src="/common.jpg" 
+                      src="/images/common.jpg" 
                       alt="Common Room" 
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
@@ -533,7 +533,7 @@ function App() {
                   
                   <div className="overflow-hidden">
                     <img 
-                      src="/transformer.png" 
+                      src="/images/transformer.png" 
                       alt="Transformer" 
                       className="w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
                     />
@@ -566,7 +566,7 @@ function App() {
                 <div className="flex justify-center">
                   <div className="aspect-video bg-gray-100 overflow-hidden rounded-lg max-w-4xl w-full">
                     <img 
-                      src="/balliol.png" 
+                      src="/images/balliol.png" 
                       alt="Balliol College" 
                       className="w-full h-full object-cover"
                     />
@@ -640,7 +640,7 @@ function App() {
                   <div className="overflow-hidden rounded-lg">
                     <a href="https://meaningfultechnologies.com/" target="_blank" rel="noopener noreferrer">
                       <img 
-                        src="/mt.png" 
+                        src="/images/mt.png" 
                         alt="Meaningful Technologies Organization" 
                         className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300"
                       />
@@ -729,21 +729,21 @@ function App() {
                 <div className="grid md:grid-cols-3 gap-8">
                   <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <img 
-                      src="/markpost.png" 
+                      src="/images/markpost.png" 
                       alt="Mark Zuckerberg on AI" 
                       className="w-full h-auto object-contain"
                     />
                   </div>
                   <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <img 
-                      src="/sampost.png" 
+                      src="/images/sampost.png" 
                       alt="Sam Altman on AI" 
                       className="w-full h-auto object-contain"
                     />
                   </div>
                   <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <img 
-                      src="/elonpost.png" 
+                      src="/images/elonpost.png" 
                       alt="Elon Musk on AI" 
                       className="w-full h-auto object-contain"
                     />
@@ -789,7 +789,7 @@ function App() {
       <nav className="flex items-center justify-between px-6 md:px-12 py-6">
         <div className="flex items-center space-x-2">
           <img 
-            src="/logo8.png" 
+            src="/images/logo8.png" 
             alt="Resize Logo" 
             className="w-8 h-8 object-contain rounded-lg"
           />
@@ -846,7 +846,7 @@ function App() {
             <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
                 <img 
-                  src="/logo8.png" 
+                  src="/images/logo8.png" 
                   alt="OAISIS Logo" 
                   className="w-8 h-8 object-contain rounded-lg filter invert"
                 />
