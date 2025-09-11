@@ -158,7 +158,7 @@ function App() {
                           className={`w-full h-full ${module.id === 1 ? 'object-contain' : 'object-cover'}`}
                         />
                       </div>
-                      <h3 className="text-xl font-bold text-black mb-2">Module {module.id}: {module.title}</h3>
+                      <h3 className="text-xl font-bold text-black mb-2">Vertical {module.id}: {module.title}</h3>
                       <p className="text-gray-600">{module.description}</p>
                     </div>
                   ))}
@@ -313,7 +313,7 @@ function App() {
                       The students who understand this transformation won't just witness history—they'll write it.
                     </p>
                     <p className="text-gray-700 mb-6">
-                      We see 14-17 year olds not as students waiting to learn, but as future leaders ready to lead. 
+                      We see 14-18 year olds not as students waiting to learn, but as future leaders ready to lead. 
                       They possess the curiosity, creativity, and fearlessness that this moment demands.
                     </p>
                     <p className="text-gray-700">
@@ -479,7 +479,7 @@ function App() {
 
                 <div className="mb-12">
                   <p className="text-gray-600 text-2xl leading-relaxed mb-2 flex flex-wrap items-baseline">
-                    <span>Two week AI intensive for 14 - 17 year olds at the University of Oxford.&nbsp;&nbsp;</span>
+                    <span>Two week AI intensive for 14 - 18 year olds at the University of Oxford.&nbsp;&nbsp;</span>
                   </p>
                   <p className="text-gray-600 text-2xl leading-relaxed">
                     Taught by University of Oxford Researchers.
@@ -507,20 +507,25 @@ function App() {
                     
                     <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                       <p>
-                        In 2017, Google released The Transformer. This model shown on the
-                        right, sparked the AI revolution we are witnessing. At OAISIS, we aim to 
-                        bring 14 - 17 year olds interested in AI careers, up to speed on the past 8 years of research,
+                        In 2017, Google released The Transformer (shown right). This model sparked the AI revolution 
+                        we are witnessing. At OAISIS, we aim to 
+                        bring 14 - 18 year olds interested in AI careers, up to speed on the past 8 years of research,
                         putting them in a position to impress.
                       </p>
                       <p>
-                        God willing, Over the course of just two weeks, students will gain a
+                        God willing, over the course of just two weeks, students will gain a
                         strong foundation in modern AI, exploring everything from neural networks
                         to cutting-edge large language models like ChatGPT. </p>
-                      <p>OASIS is an academically focused summer school. While there are enjoyable 
-                        activities, the emphasis will be on study, as our priority is students
-                        career potential as a pose to brief enjoyment. We’re looking for motivated, 
-                        hard working students ready to rise to the challenge. You can 
-                        learn more about what this program offers by reading our vision. 
+                      <p>
+                        We haven't designed OASIS to be an easy summer school. Our priority is
+                        to maximize students' career potential, and that takes effort. We're 
+                        looking for motivated, hard working students ready to rise to the challenge. You can 
+                        learn more about what this program offers by <button 
+                          onClick={() => setActiveTab('vision')}
+                          className="text-blue-600 hover:text-blue-700 underline font-medium"
+                        >
+                         reading our vision
+                        </button>. 
                       </p>
                     </div>
                     
@@ -547,18 +552,18 @@ function App() {
               <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
                   <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
-                    Where you will stay
+                    Where You Will Stay
                   </h2>
                   <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                     Balliol College, founded in 1263, is one of Oxford's oldest and most prestigious colleges. 
                     Known for its academic excellence and vibrant community, Balliol offers students a unique 
                     blend of historical tradition and modern innovation in the heart of Oxford. Notable alumni 
-                    include former Prime Ministers Harold Macmillan, Edward Heath, and Boris Johnson, Nobel Prize winners, 
-                    and literary giants like Gerard Manley Hopkins and Aldous Huxley. <button 
+                    include former British Prime Ministers Boris Johnson, Harold Macmillan and Edward Heath,
+                    13 Nobel Prize winners, and literary giants like Gerard Manley Hopkins and Aldous Huxley. <button 
                       onClick={() => setActiveTab('accommodation')}
                       className="text-blue-600 hover:text-blue-700 underline font-medium"
                     >
-                      Learn more about accommodation
+                      Learn more about the accommodation
                     </button>.
                   </p>
                 </div>
@@ -607,25 +612,25 @@ function App() {
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                   <div className="space-y-6">
                     <div>
-                      <p className="text-gray-400 text-base font-medium mb-6 tracking-wider uppercase">Our Impact Beyond</p>
+                      <p className="text-gray-400 text-base font-medium mb-6 tracking-wider uppercase">Talent Reach</p>
                       <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight mb-8">
-                        Supporting AI for Good
+                        Expert Network
                       </h2>
                     </div>
                     
                     <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                       <p>
-                        The same organizers behind OAISIS are behind Meaningful Technologies, an organization dedicated to 
-                        democratizing access to AI expertise for those working on projects that benefit humanity.
+                        Our network reaches far beyond Oxford, with a experts from the likes of Google 
+                        DeepMind, Meta and McKinsey QuantumBlack, who students can reach out to for advice in their
+                        long term AI journey.
                       </p>
                       <p>
-                        Through Meaningful Technologies, we provide free remote AI support to researchers, nonprofits, and innovators 
-                        tackling global challenges. Whether you need guidance on specific AI techniques, help 
-                        with implementation, or answers to niche technical questions, our network of experts 
-                        is here to help accelerate your impact.
+                        Through Meaningful Technologies, we provide free remote AI support from leading experts 
+                        in the field, to those beginning their journey, with one condition: they must be working 
+                        to make the world a better place.
                       </p>
                       <p>
-                        This commitment to AI for good reflects our core belief: advanced AI knowledge should 
+                        This commitment to AI for good reflects one Meaningful Technologies' core beliefs: advanced AI knowledge should 
                         be accessible to those working to make the world better. <a href="https://meaningfultechnologies.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline font-medium">Learn more about Meaningful Technologies</a>.
                       </p>
                     </div>
@@ -633,7 +638,7 @@ function App() {
                     <div className="flex flex-wrap gap-4 pt-6">
                       <span className="px-6 py-3 bg-white text-gray-700 rounded-full text-base font-medium shadow-sm">Free Support</span>
                       <span className="px-6 py-3 bg-white text-gray-700 rounded-full text-base font-medium shadow-sm">Expert Network</span>
-                      <span className="px-6 py-3 bg-white text-gray-700 rounded-full text-base font-medium shadow-sm">Global Impact</span>
+                      <span className="px-6 py-3 bg-white text-gray-700 rounded-full text-base font-medium shadow-sm">Real Opportunities</span>
                     </div>
                   </div>
                   
@@ -672,7 +677,7 @@ function App() {
                   <div className="space-y-4">
                     <h3 className="text-xl font-bold text-black">Hands-On Projects</h3>
                     <p className="text-gray-600 leading-relaxed">
-                      Students build real AI applications from neural networks to language models, 
+                      Students learn best by building real AI applications from neural networks to language models, 
                       gaining practical experience that goes beyond theoretical knowledge.
                     </p>
                   </div>
@@ -680,8 +685,8 @@ function App() {
                   <div className="space-y-4">
                     <h3 className="text-xl font-bold text-black">Expert Mentorship</h3>
                     <p className="text-gray-600 leading-relaxed">
-                      Learn directly from AI researchers and industry professionals who provide 
-                      personalized guidance and share cutting-edge insights from the field.
+                      Learn directly from AI researchers who providing 
+                      personalized guidance and share cutting-edge insights into state-of-the-art AI research.
                     </p>
                   </div>
 
@@ -696,16 +701,16 @@ function App() {
                   <div className="space-y-4">
                     <h3 className="text-xl font-bold text-black">Portfolio Development</h3>
                     <p className="text-gray-600 leading-relaxed">
-                      Students create impressive AI projects that showcase their skills to universities 
-                      and future employers, building a strong foundation for their careers.
+                      Helping students demonstrate their skills to universities and future employers.
+                      Having an impressive project portfolio proves practical ability improving prospects.
                     </p>
                   </div>
 
                   <div className="space-y-4">
                     <h3 className="text-xl font-bold text-black">Future-Ready Skills</h3>
                     <p className="text-gray-600 leading-relaxed">
-                      Beyond technical knowledge, students develop critical thinking, problem-solving, 
-                      and ethical AI practices that prepare them for leadership in the AI revolution.
+                      Beyond technical knowledge, students must develop critical thinking, problem-solving, 
+                      and AI practices to prepare them for leadership in the AI revolution.
                     </p>
                   </div>
                 </div>
