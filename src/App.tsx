@@ -1,8 +1,111 @@
 import React, { useState } from 'react';
-import { ArrowRight, Zap } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [formStatus, setFormStatus] = useState({
+    isSubmitting: false,
+    isSuccess: false,
+    isError: false,
+    message: ''
+  });
+
+  // EmailJS configuration - replace with your actual values
+  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_oek5h8g';
+  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_8nmyo8g';
+  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'qek1xidpKLDofXa4z';
+
+  // Initialize EmailJS
+  React.useEffect(() => {
+    if (EMAILJS_PUBLIC_KEY !== 'qek1xidpKLDofXa4z') {
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+    }
+  }, [EMAILJS_PUBLIC_KEY]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setFormStatus({
+        isSubmitting: false,
+        isSuccess: false,
+        isError: true,
+        message: 'Please fill in all fields.'
+      });
+      return;
+    }
+
+    if (!EMAILJS_PUBLIC_KEY || EMAILJS_PUBLIC_KEY === 'qrpDqd4BYagZAeDXk') {
+      setFormStatus({
+        isSubmitting: false,
+        isSuccess: false,
+        isError: true,
+        message: 'EmailJS is not configured. Please contact the administrator.'
+      });
+      return;
+    }
+
+    setFormStatus({
+      isSubmitting: true,
+      isSuccess: false,
+      isError: false,
+      message: ''
+    });
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: 'ameen.izhac@gmail.com' // Your email address
+      };
+
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      setFormStatus({
+        isSubmitting: false,
+        isSuccess: true,
+        isError: false,
+        message: 'Message sent successfully! We\'ll get back to you soon, God willing.'
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
+
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setFormStatus({
+        isSubmitting: false,
+        isSuccess: false,
+        isError: true,
+        message: 'Failed to send message. Please try again or contact us directly.'
+      });
+    }
+  };
 
   const renderContent = () => {
     switch (activeTab) {
@@ -16,14 +119,14 @@ function App() {
                   Privacy Policy
                 </h1>
                 <p className="text-lg text-gray-600 mb-12">
-                  Last updated: January 2024
+                  Last updated: September 2025
                 </p>
                 
                 <div className="space-y-8 text-gray-700 leading-relaxed">
                   <div>
                     <h2 className="text-2xl font-bold text-black mb-4">Introduction</h2>
                     <p>
-                      OAISIS ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you apply to or participate in our AI summer school program at Oxford University.
+                      OASIS ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you apply to or participate in our AI summer school program at Oxford University.
                     </p>
                   </div>
                   
@@ -79,7 +182,7 @@ function App() {
                   <div>
                     <h2 className="text-2xl font-bold text-black mb-4">Data Security</h2>
                     <p>
-                      We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure.
+                      We are committed to protecting your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure.
                     </p>
                   </div>
                   
@@ -98,14 +201,14 @@ function App() {
                   <div>
                     <h2 className="text-2xl font-bold text-black mb-4">Cookies and Tracking</h2>
                     <p>
-                      Our website uses cookies to enhance your browsing experience and analyze website traffic. You can control cookie settings through your browser preferences.
+                      Our website may use cookies to enhance your browsing experience and analyze website traffic. You can control cookie settings through your browser preferences.
                     </p>
                   </div>
                   
                   <div>
                     <h2 className="text-2xl font-bold text-black mb-4">Changes to This Policy</h2>
                     <p>
-                      We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on our website and updating the "Last updated" date.
+                      We may update this Privacy Policy from time to time and notify you of any material changes by posting the new policy on our website and updating the "Last updated" date.
                     </p>
                   </div>
                   
@@ -115,11 +218,11 @@ function App() {
                       If you have any questions about this Privacy Policy or our data practices, please contact us:
                     </p>
                     <div className="bg-gray-50 p-6 rounded-lg">
-                      <p><strong>Email:</strong> privacy@oaisis.agency</p>
-                      <p><strong>Address:</strong> OAISIS Privacy Officer<br />
-                      123 Design Street<br />
-                      Creative District<br />
-                      New York, NY 10001</p>
+                      <p><strong>Email:</strong> info@oasis.com</p>
+                      <p><strong>Address:</strong> OASIS Privacy Officer<br />
+                      Wolfson Building<br />
+                      7 Parks Road<br />
+                      Oxford</p>
                     </div>
                   </div>
                 </div>
@@ -145,7 +248,7 @@ function App() {
                   {[
                     { id: 1, title: "Neural Networks Fundamentals", description: "Introduction to artificial neurons, perceptrons, and basic neural network architectures." },
                     { id: 2, title: "Intro to NNs in PyTorch", description: "Hands-on implementation of neural networks using PyTorch framework and practical coding exercises." },
-                    { id: 3, title: "Advanced Architectures", description: "Explore sophisticated neural network designs including CNNs, RNNs, and transformer architectures." },
+                    { id: 3, title: "Advanced Architectures", description: "Explore sophisticated neural network designs including CNNs, Diffusion Models, and transformer architectures." },
                     { id: 4, title: "Advanced Architectures in Practice", description: "Apply complex neural network architectures to real-world problems and datasets." },
                     { id: 5, title: "Project Work", description: "Independent and collaborative projects to build comprehensive AI applications from concept to completion." },
                     { id: 6, title: "Careers", description: "Explore AI career paths, industry insights, and prepare for university applications and future opportunities." }
@@ -153,9 +256,9 @@ function App() {
                     <div key={module.id} className="group cursor-pointer">
                       <div className="aspect-video rounded-lg mb-4 overflow-hidden group-hover:shadow-lg transition-all duration-300">
                         <img 
-                          src={`/images/mod${module.id === 2 ? '2a' : module.id === 6 ? '6a' : module.id}.${module.id === 1 ? 'png' : module.id === 2 ? 'png' : module.id === 3 ? 'png' : module.id === 4 ? 'jpeg' : module.id === 5 ? 'jpg' : 'webp'}`}
+                          src={`/images/mod${module.id === 2 ? '2a' : module.id === 6 ? '6a' : module.id}.${module.id === 1 ? 'png' : module.id === 2 ? 'png' : module.id === 3 ? 'png' : module.id === 4 ? 'jpg' : module.id === 5 ? 'jpg' : 'webp'}`}
                           alt={module.title}
-                          className={`w-full h-full ${module.id === 1 ? 'object-contain' : 'object-cover'}`}
+                          className={`w-full h-full ${module.id === 1 || module.id === 4 ? 'object-contain' : 'object-cover'}`}
                         />
                       </div>
                       <h3 className="text-xl font-bold text-black mb-2">Vertical {module.id}: {module.title}</h3>
@@ -197,7 +300,7 @@ function App() {
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
                       <h3 className="text-xl font-bold text-black mb-3">Modern Facilities</h3>
-                      <p className="text-gray-600">Contemporary rooms with high-speed internet and modern amenities.</p>
+                      <p className="text-gray-600">Contemporary rooms with comfortable furnishings and modern amenities.</p>
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-black mb-3">Community Spaces</h3>
@@ -293,79 +396,85 @@ function App() {
                       A Different Summer School.
                     </p>
                     <p className="text-gray-700 mb-6">
-                      What we have seen from other summer schools around Oxford is a generic introduction to further
-                      education in STEM fields. This suffices for students look to explore options. For students 
-                      looking to become industry leaders, it does not suffice. This summer school is not designed 
-                      to be an introduction, nor an exploration of potential, but an rigorous study of AI beginning
-                      from fundamental concepts all the way to state-of-the-art research in Machine Learning to
-                      prepare students of the course for 
+                    The typical Oxford summer school offers a broad, surface-level introduction to STEM—fine 
+                    for those merely exploring options. But students with ambitions of becoming industry 
+                    leaders need more than a generic overview. By focusing exclusively on Artificial Intelligence,
+                    this programs intends to deliver the depth, discipline, and intellectual 
+                    rigor required to excel.
+                    </p>
+                    <p className="text-gray-700">           
+                    This summer school is not a casual introduction, nor a light exploration of possibilities. 
+                    It is an intensive, structured journey through AI—beginning with the fundamental principles
+                    and advancing to state-of-the-art research in Machine Learning. For students who
+                    aspire to shape the future of technology, the course is designed to equips participants 
+                    with the knowledge and skills essential for a serious career in AI.
+                    </p>
+                  </div>
+                                    
+                  <div>
+                    <h2 className="text-2xl font-bold text-black mb-6">Vertical Learning</h2>
+                    <p className="text-gray-700 mb-6">
+                    Our program adopts a depth-first teaching approach. This means we spend
+                      little time on beginner concepts and move very quickly to advanced topics by
+                      teaching only what is absolutely necessary before moving on. Don't worry, we
+                      know what we're doing; we return to the basics later. 
                     </p>
                     <p className="text-gray-700">
-                      Notice we do not accept all students as a financially motivated orgnaization. We realize 
-                      the course content requires caliber, which is why we adopt an application approach.
+                    This approach allows students to reach the top of the mountain and look down
+                      at the terrain below, giving them a comprehensive view of the entire subject. 
+                      They gain an early appreciation for the bigger picture and understand how all
+                      the different parts connect, which makes returning to foundational concepts later
+                      much more meaningful and productive. You won't just learn the "what" and 
+                      "how"—you'll understand the "why" right from the start.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h2 className="text-2xl font-bold text-black mb-6">Preparation for Self Learning</h2>
+                    <p className="text-gray-700 mb-6">
+                      It is not possible to teach the entirity of AI in two weeks. To truly succeed in 
+                      the field of Machine Learning, students will need to continue their learning 
+                      beyond the summer school. That is why we focus not only
+                      teaching a AI theory and application, but also how to learn AI. We want to give students 
+                      a roadmap for the skills they need to continue their development. 
+                    </p>
+                    <p className="text-gray-700">
+                    This includes learning how to read and understand academic papers, how to build 
+                    projects or find existing open-source projects to contribute to, and finding collaborators
+                    and communnities to aid them on their journey.
+                    </p>
+                  </div>
+              
+                  <div>
+                    <h2 className="text-2xl font-bold text-black mb-6">Staying Ahead of the Curve</h2>
+                    <p className="text-gray-700 mb-6">
+                      Traditional education moves too slowly for the pace of AI advancement. Every year
+                      the state-of-the-art in AI is rendering concepts taught in traditional education obsolete.
+                      It is important to us that we keep our curriculum up to date with the fast advancement
+                      of the field. 
+                    </p>
+                    <p className="text-gray-700">
+                      We may not accept all students as we realize the course content requires a certain caliber, 
+                      which is why we adopt an application approach. That given, we do not expect prior
+                      knowledge in AI. We are seeking students with a strong ability to learn and an intention
+                      to do good in the world with AI.  
                     </p>
                   </div>
                   
                   <div>
-                    <h2 className="text-2xl font-bold text-black mb-6">The Revolution is Now</h2>
+                    <h2 className="text-2xl font-bold text-black mb-6">All Encompassing</h2>
                     <p className="text-gray-700 mb-6">
-                      Every day, AI reshapes industries, redefines possibilities, and rewrites the rules of what's possible. 
-                      The students who understand this transformation won't just witness history—they'll write it.
-                    </p>
-                    <p className="text-gray-700 mb-6">
-                      We see 14-18 year olds not as students waiting to learn, but as future leaders ready to lead. 
-                      They possess the curiosity, creativity, and fearlessness that this moment demands.
-                    </p>
-                    <p className="text-gray-700">
-                      Our mission is simple: accelerate their journey from curious minds to confident creators.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h2 className="text-2xl font-bold text-black mb-6">Beyond Traditional Education</h2>
-                    <p className="text-gray-700 mb-6">
-                      Traditional education moves too slowly for the pace of AI advancement. While others teach yesterday's 
-                      concepts, we immerse students in tomorrow's possibilities.
+                      Success in AI requires more than just theoretical knowledge. It demands a complete ecosystem of learning: 
+                      deep understanding of AI theory, hands-on practical application, real-world project experience, 
+                      portfolio development, and career preparation skills. At OASIS, we recognize that each component 
+                      is essential for career success.
                     </p>
                     <p className="text-gray-700 mb-6">
-                      We don't just teach neural networks—we show students how to architect intelligence. 
-                      We don't just explain transformers—we guide them to build the next breakthrough.
-                    </p>
-                    <p className="text-gray-700">
-                      Every lesson, every project, every moment is designed to bridge the gap between learning and leading.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h2 className="text-2xl font-bold text-black mb-6">The Oxford Advantage</h2>
-                    <p className="text-gray-700 mb-6">
-                      Oxford University isn't just our location—it's our inspiration. For centuries, these halls have 
-                      nurtured minds that changed the world. Today, they nurture the minds that will define AI's future.
-                    </p>
-                    <p className="text-gray-700 mb-6">
-                      Our students don't just visit Oxford—they become part of its legacy. They walk the same paths as 
-                      Nobel laureates, think in the same spaces as prime ministers, and dream with the same ambition 
-                      as history's greatest innovators.
-                    </p>
-                    <p className="text-gray-700">
-                      When they leave, they carry not just knowledge, but the confidence that comes from learning 
-                      in one of the world's most prestigious institutions.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h2 className="text-2xl font-bold text-black mb-6">Our Promise</h2>
-                    <p className="text-gray-700 mb-6">
-                      We promise to challenge every assumption, question every limitation, and push every boundary. 
-                      We promise to treat our students not as children, but as the brilliant minds they are.
-                    </p>
-                    <p className="text-gray-700 mb-6">
-                      We promise to provide not just education, but transformation. Not just knowledge, but wisdom. 
-                      Not just skills, but the confidence to use them.
-                    </p>
-                    <p className="text-gray-700">
-                      Most importantly, we promise to prepare them not for the world as it is, but for the world 
-                      they will create.
+                      Our program aims to integrate all of these elements, from neural network fundamentals to cutting-edge 
+                      research applications, from individual and collaborative coding exercises to building 
+                      impressive portfolios. 
+                      We're not looking to simply teach AI; we seek to prepare students for the complete journey from curious learners
+                      to confident trainee AI engineers. 
                     </p>
                   </div>
                   
@@ -377,8 +486,294 @@ function App() {
                       The AI revolution began years ago. But for the next generation of leaders, their moment starts now.
                     </p>
                     <p className="text-xl font-bold text-black">
-                      At OAISIS, we're not just preparing students for the future—we're empowering them to create it.
+                      At OASIS, we don't want to prepare students for the future. We want to equip them to be part of it.
                     </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        );
+      
+      case 'pricing':
+        return (
+          <div className="min-h-screen bg-white">
+            {/* Pricing Section */}
+            <section className="px-6 md:px-12 py-24">
+              <div className="max-w-7xl mx-auto">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-8 text-center">
+                  Choose Your Program
+                </h1>
+                <p className="text-xl text-gray-600 mb-16 text-center max-w-3xl mx-auto">
+                  Select the program that best fits your learning goals, schedule, and budget. All programs offer intensive AI education with hands-on experience.
+                </p>
+                
+                {/* Pricing Cards Design */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-6">
+                  {/* One Week Stream */}
+                  <div className="bg-white rounded-2xl p-6 lg:p-8 border-2 border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-xl relative">
+                    <div className="text-center mb-6">
+                      <h2 className="text-2xl md:text-3xl font-bold text-black mb-2">
+                        One Week
+                      </h2>
+                      <div className="mb-4">
+                        <span className="text-4xl md:text-5xl font-bold text-black">£5,495</span>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-4">
+                        Fast-paced, focused learning for students ready to dive deep into AI fundamentals
+                      </p>
+                    </div>
+                    
+                    <div className="space-y-4 mb-6">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <h3 className="font-bold text-black mb-1 text-sm">Neural Networks Fundamentals</h3>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <h3 className="font-bold text-black mb-1 text-sm">PyTorch Implementation</h3>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <h3 className="font-bold text-black mb-1 text-sm">Advanced Architectures</h3>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <h3 className="font-bold text-black mb-1 text-sm">Project Portfolio</h3>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                      <div className="space-y-2 text-sm text-gray-600">
+                        <div className="flex justify-between">
+                          <span>Duration:</span>
+                          <span className="font-medium">7 days</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Hours per day:</span>
+                          <span className="font-medium">8-10 hours</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Accommodation:</span>
+                          <span className="font-medium">Not included</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <button className="w-full bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                      Apply Now
+                    </button>
+                  </div>
+                  
+                  {/* Two Weeks Out of College */}
+                  <div className="bg-white rounded-2xl p-6 lg:p-8 border-2 border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-xl relative">
+                    <div className="text-center mb-6">
+                      <h2 className="text-2xl md:text-3xl font-bold text-black mb-2">
+                        Two Weeks
+                      </h2>
+                      <div className="mb-4">
+                        <span className="text-4xl md:text-5xl font-bold text-black">£5,995</span>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-4">
+                        Complete AI education with deeper exploration and extended project work
+                      </p>
+                    </div>
+                    
+                    <div className="space-y-4 mb-6">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <h3 className="font-bold text-black mb-1 text-sm">Complete AI Foundation</h3>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <h3 className="font-bold text-black mb-1 text-sm">Research Applications</h3>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <h3 className="font-bold text-black mb-1 text-sm">Collaborative Projects</h3>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <h3 className="font-bold text-black mb-1 text-sm">Career Preparation</h3>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <h3 className="font-bold text-black mb-1 text-sm">Mentorship Program</h3>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                      <div className="space-y-2 text-sm text-gray-600">
+                        <div className="flex justify-between">
+                          <span>Duration:</span>
+                          <span className="font-medium">14 days</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Hours per day:</span>
+                          <span className="font-medium">6-8 hours</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Accommodation:</span>
+                          <span className="font-medium">Not included</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <button className="w-full bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                      Apply Now
+                    </button>
+                  </div>
+                  
+                  {/* Two Weeks In College */}
+                  <div className="bg-white rounded-2xl p-6 lg:p-8 border-2 border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-xl relative">
+                    <div className="text-center mb-6">
+                      <h2 className="text-2xl md:text-3xl font-bold text-black mb-2">
+                        Two Weeks In College
+                      </h2>
+                      <div className="mb-4">
+                        <span className="text-4xl md:text-5xl font-bold text-black">£6,995</span>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-4">
+                        Full residential experience with accommodation at Balliol College, Oxford
+                      </p>
+                    </div>
+                    
+                    <div className="space-y-4 mb-6">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <h3 className="font-bold text-black mb-1 text-sm">Complete AI Foundation</h3>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <h3 className="font-bold text-black mb-1 text-sm">Research Applications</h3>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <h3 className="font-bold text-black mb-1 text-sm">Balliol College Accommodation</h3>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <h3 className="font-bold text-black mb-1 text-sm">All Meals Included</h3>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <h3 className="font-bold text-black mb-1 text-sm">24/7 Support</h3>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                      <div className="space-y-2 text-sm text-gray-600">
+                        <div className="flex justify-between">
+                          <span>Duration:</span>
+                          <span className="font-medium">14 days</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Hours per day:</span>
+                          <span className="font-medium">6-8 hours</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Accommodation:</span>
+                          <span className="font-medium">Included</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <button className="w-full bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+                
+                {/* Comparison Section */}
+                <div className="mt-20">
+                  <h2 className="text-3xl md:text-4xl font-bold text-black mb-12 text-center">
+                    Program Comparison
+                  </h2>
+                  
+                  <div className="bg-gray-50 rounded-2xl p-8 lg:p-12">
+                    <div className="grid md:grid-cols-3 gap-8">
+                      <div className="text-center">
+                        <h3 className="text-xl font-bold text-black mb-4">Best For</h3>
+                        <div className="space-y-3">
+                          <div className="bg-white rounded-lg p-4">
+                            <h4 className="font-bold text-gray-800 mb-2">One Week</h4>
+                            <p className="text-sm text-gray-600">Students with programming experience seeking intensive AI training</p>
+                          </div>
+                          <div className="bg-white rounded-lg p-4">
+                            <h4 className="font-bold text-gray-800 mb-2">Two Weeks Out</h4>
+                            <p className="text-sm text-gray-600">Complete beginners wanting comprehensive AI education</p>
+                          </div>
+                          <div className="bg-white rounded-lg p-4">
+                            <h4 className="font-bold text-gray-800 mb-2">Two Weeks In</h4>
+                            <p className="text-sm text-gray-600">Students wanting full Oxford residential experience</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="text-center">
+                        <h3 className="text-xl font-bold text-black mb-4">Accommodation</h3>
+                        <div className="space-y-3">
+                          <div className="bg-white rounded-lg p-4">
+                            <h4 className="font-bold text-gray-800 mb-2">One Week</h4>
+                            <p className="text-sm text-gray-600">Not included - arrange your own</p>
+                          </div>
+                          <div className="bg-white rounded-lg p-4">
+                            <h4 className="font-bold text-gray-800 mb-2">Two Weeks Out</h4>
+                            <p className="text-sm text-gray-600">Not included - arrange your own</p>
+                          </div>
+                          <div className="bg-white rounded-lg p-4">
+                            <h4 className="font-bold text-gray-800 mb-2">Two Weeks In</h4>
+                            <p className="text-sm text-gray-600">Balliol College accommodation included</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="text-center">
+                        <h3 className="text-xl font-bold text-black mb-4">Value</h3>
+                        <div className="space-y-3">
+                          <div className="bg-white rounded-lg p-4">
+                            <h4 className="font-bold text-gray-800 mb-2">One Week</h4>
+                            <p className="text-sm text-gray-600">£5,495 - Intensive foundation</p>
+                          </div>
+                          <div className="bg-white rounded-lg p-4">
+                            <h4 className="font-bold text-gray-800 mb-2">Two Weeks Out</h4>
+                            <p className="text-sm text-gray-600">£5,995 - Comprehensive learning</p>
+                          </div>
+                          <div className="bg-white rounded-lg p-4">
+                            <h4 className="font-bold text-gray-800 mb-2">Two Weeks In</h4>
+                            <p className="text-sm text-gray-600">£6,995 - Full Oxford experience</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -396,7 +791,7 @@ function App() {
                   Get in Touch
                 </h1>
                 <p className="text-xl text-gray-600 mb-16">
-                  Ready to start your project? Let's discuss how we can help bring your vision to life.
+                  Want to build real skills this summer? Let’s get started.
                 </p>
                 
                 <div className="grid md:grid-cols-2 gap-16">
@@ -405,11 +800,11 @@ function App() {
                     <div className="space-y-4">
                       <div>
                         <h3 className="font-bold text-black">Email</h3>
-                        <p className="text-gray-600">hello@oaisis.agency</p>
+                        <p className="text-gray-600">info@oasis.com</p>
                       </div>
                       <div>
                         <h3 className="font-bold text-black">Phone</h3>
-                        <p className="text-gray-600">+1 (555) 123-4567</p>
+                        <p className="text-gray-600">+44 (0) 7506 266 120</p>
                       </div>
                       <div>
                         <h3 className="font-bold text-black">Office</h3>
@@ -424,34 +819,67 @@ function App() {
                   
                   <div>
                     <h2 className="text-2xl font-bold text-black mb-6">Send us a Message</h2>
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                       <div>
                         <input 
                           type="text" 
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
                           placeholder="Your Name" 
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
+                          disabled={formStatus.isSubmitting}
                         />
                       </div>
                       <div>
                         <input 
                           type="email" 
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
                           placeholder="Your Email" 
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
+                          disabled={formStatus.isSubmitting}
                         />
                       </div>
                       <div>
                         <textarea 
+                          name="message"
+                          value={formData.message}
+                          onChange={handleInputChange}
                           placeholder="Your Message" 
                           rows={5}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
+                          disabled={formStatus.isSubmitting}
                         ></textarea>
                       </div>
+                      
+                      {/* Status Message */}
+                      {formStatus.message && (
+                        <div className={`p-4 rounded-lg ${
+                          formStatus.isSuccess 
+                            ? 'bg-green-100 text-green-800 border border-green-200' 
+                            : formStatus.isError 
+                            ? 'bg-red-100 text-red-800 border border-red-200'
+                            : 'bg-blue-100 text-blue-800 border border-blue-200'
+                        }`}>
+                          {formStatus.message}
+                        </div>
+                      )}
+                      
                       <button 
                         type="submit"
-                        className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full flex items-center space-x-2 transition-all duration-300 transform hover:scale-105"
+                        disabled={formStatus.isSubmitting}
+                        className={`px-8 py-3 rounded-full flex items-center space-x-2 transition-all duration-300 transform hover:scale-105 ${
+                          formStatus.isSubmitting
+                            ? 'bg-gray-400 cursor-not-allowed'
+                            : 'bg-blue-600 hover:bg-blue-700'
+                        } text-white`}
                       >
-                        <span>Send Message</span>
-                        <ArrowRight className="w-4 h-4" />
+                        <span>
+                          {formStatus.isSubmitting ? 'Sending...' : 'Send Message'}
+                        </span>
+                        {!formStatus.isSubmitting && <ArrowRight className="w-4 h-4" />}
                       </button>
                     </form>
                   </div>
@@ -474,7 +902,7 @@ function App() {
                   <span className="text-gray-400">your AI </span>
                   <span className="text-black">Career</span>
                   <br />
-                  <span className="text-black">with OAISIS.</span>
+                  <span className="text-black">with OASIS.</span>
                 </h1>
 
                 <div className="mb-12">
@@ -508,7 +936,7 @@ function App() {
                     <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                       <p>
                         In 2017, Google released The Transformer (shown right). This model sparked the AI revolution 
-                        we are witnessing. At OAISIS, we aim to 
+                        we are witnessing. At OASIS, we aim to 
                         bring 14 - 18 year olds interested in AI careers, up to speed on the past 8 years of research,
                         putting them in a position to impress.
                       </p>
@@ -584,7 +1012,7 @@ function App() {
             <section className="px-6 md:px-12 py-24 bg-white">
               <div className="grid md:grid-cols-2 gap-16 items-center">
                 <div>
-                  <p className="text-gray-400 text-sm font-medium mb-6 tracking-wider uppercase">Let's meet OAISIS</p>
+                  <p className="text-gray-400 text-sm font-medium mb-6 tracking-wider uppercase">Let's meet OASIS</p>
                   <h2 className="text-2xl md:text-3xl font-bold text-black leading-relaxed">
                     We create transformative AI education experiences that prepare students for the future.
                   </h2>
@@ -731,26 +1159,26 @@ function App() {
                   </p>
                 </div>
                 
-                <div className="grid md:grid-cols-3 gap-8">
-                  <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="grid md:grid-cols-3 gap-8 items-start">
+                  <div>
                     <img 
-                      src="/images/markpost.png" 
+                      src="/images/markpost2.png" 
                       alt="Mark Zuckerberg on AI" 
-                      className="w-full h-auto object-contain"
+                      className="w-full h-auto border border-gray-300 transform scale-90 origin-top"
                     />
                   </div>
-                  <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div>
                     <img 
                       src="/images/sampost.png" 
                       alt="Sam Altman on AI" 
-                      className="w-full h-auto object-contain"
+                      className="w-full h-auto border border-gray-300 transform scale-110 origin-top"
                     />
                   </div>
-                  <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div>
                     <img 
                       src="/images/elonpost.png" 
                       alt="Elon Musk on AI" 
-                      className="w-full h-auto object-contain"
+                      className="w-full h-auto border border-gray-300 transform scale-90 origin-top"
                     />
                   </div>
                 </div>
@@ -758,7 +1186,7 @@ function App() {
                 <div className="text-center mt-12">
                   <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
                     These visionary leaders understand that AI isn't just changing technology—it's reshaping entire industries, 
-                    economies, and the way we live and work. At OAISIS, we're ensuring the next generation is ready to lead 
+                    economies, and the way we live and work. At OASIS, we're ensuring the next generation is ready to lead 
                     this transformation, not just witness it.
                   </p>
                 </div>
@@ -794,7 +1222,8 @@ function App() {
       <nav className="flex items-center justify-between px-6 md:px-12 py-6">
         <div className="flex items-center space-x-2">
           <img 
-            src="/images/logo8.png" 
+            src="/images/wave1.png" 
+            // src="/images/logo8.png" 
             alt="Resize Logo" 
             className="w-8 h-8 object-contain rounded-lg"
           />
@@ -802,7 +1231,7 @@ function App() {
             onClick={() => setActiveTab('home')}
             className="text-xl font-bold text-black hover:text-gray-700 transition-colors"
           >
-            OAISIS
+            OASIS
           </button>
         </div>
         
@@ -852,10 +1281,10 @@ function App() {
               <div className="flex items-center space-x-2 mb-4">
                 <img 
                   src="/images/logo8.png" 
-                  alt="OAISIS Logo" 
+                  alt="OASIS Logo" 
                   className="w-8 h-8 object-contain rounded-lg filter invert"
                 />
-                <span className="text-xl font-bold">OAISIS</span>
+                <span className="text-xl font-bold">OASIS</span>
               </div>
               <p className="text-gray-400 leading-relaxed max-w-md">
                 Preparing the next generation of AI engineers through intensive, hands-on learning experiences at Oxford University.
@@ -919,7 +1348,7 @@ function App() {
           </div>
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 OAISIS. All rights reserved.</p>
+            <p>&copy; 2025 OASIS. All rights reserved.</p>
           </div>
         </div>
       </footer>
