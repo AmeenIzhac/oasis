@@ -889,6 +889,243 @@ function App() {
           </div>
         );
       
+      case 'references':
+        return (
+          <div className="min-h-screen bg-white">
+            {/* References Section */}
+            <section className="px-6 md:px-12 py-24">
+              <div className="max-w-4xl mx-auto">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-8">
+                  References & Resources
+                </h1>
+                <p className="text-xl text-gray-600 mb-16">
+                  Essential academic papers, textbooks, and resources that form the foundation of AI.
+                </p>
+                
+                <div className="space-y-12">
+                  {/* Foundational Papers */}
+                  <div>
+                    <h2 className="text-2xl font-bold text-black mb-6">Foundational Papers</h2>
+                    <div className="space-y-4">
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">Attention Is All You Need</h3>
+                        <p className="text-gray-600 mb-2">Vaswani, A., et al. (2017). Attention is all you need. Advances in neural information processing systems, 30.</p>
+                        <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          View Paper →
+                        </a>
+                      </div>
+                      
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">Deep Residual Learning for Image Recognition</h3>
+                        <p className="text-gray-600 mb-2">He, K., et al. (2016). Deep residual learning for image recognition. Proceedings of the IEEE conference on computer vision and pattern recognition.</p>
+                        <a href="https://arxiv.org/abs/1512.03385" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          View Paper →
+                        </a>
+                      </div>
+                      
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">Generative Adversarial Networks</h3>
+                        <p className="text-gray-600 mb-2">Goodfellow, I., et al. (2014). Generative adversarial nets. Advances in neural information processing systems, 27.</p>
+                        <a href="https://arxiv.org/abs/1406.2661" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          View Paper →
+                        </a>
+                      </div>
+                      
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">ImageNet Classification with Deep Convolutional Neural Networks</h3>
+                        <p className="text-gray-600 mb-2">Krizhevsky, A., Sutskever, I., & Hinton, G. E. (2012). Imagenet classification with deep convolutional neural networks. Communications of the ACM, 60(6), 84-90.</p>
+                        <a href="https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          View Paper →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Modern AI Papers */}
+                  <div>
+                    <h2 className="text-2xl font-bold text-black mb-6">Modern AI Research</h2>
+                    <div className="space-y-4">
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">Language Models are Few-Shot Learners</h3>
+                        <p className="text-gray-600 mb-2">Brown, T., et al. (2020). Language models are few-shot learners. Advances in neural information processing systems, 33, 1877-1901.</p>
+                        <a href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          View Paper →
+                        </a>
+                      </div>
+                      
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">Denoising Diffusion Probabilistic Models</h3>
+                        <p className="text-gray-600 mb-2">Ho, J., Jain, A., & Abbeel, P. (2020). Denoising diffusion probabilistic models. Advances in Neural Information Processing Systems, 33, 6840-6851.</p>
+                        <a href="https://arxiv.org/abs/2006.11239" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          View Paper →
+                        </a>
+                      </div>
+                      
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">BERT: Pre-training of Deep Bidirectional Transformers</h3>
+                        <p className="text-gray-600 mb-2">Devlin, J., et al. (2018). Bert: Pre-training of deep bidirectional transformers for language understanding. arXiv preprint arXiv:1810.04805.</p>
+                        <a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          View Paper →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Textbooks */}
+                  <div>
+                    <h2 className="text-2xl font-bold text-black mb-6">Essential Textbooks</h2>
+                    <div className="space-y-4">
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">Deep Learning</h3>
+                        <p className="text-gray-600 mb-2">Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning. MIT press.</p>
+                        <a href="https://www.deeplearningbook.org/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          Free Online Version →
+                        </a>
+                      </div>
+                      
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">Pattern Recognition and Machine Learning</h3>
+                        <p className="text-gray-600 mb-2">Bishop, C. M. (2006). Pattern recognition and machine learning. Springer.</p>
+                        <a href="https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          Free PDF →
+                        </a>
+                      </div>
+                      
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">The Elements of Statistical Learning</h3>
+                        <p className="text-gray-600 mb-2">Hastie, T., Tibshirani, R., & Friedman, J. (2009). The elements of statistical learning: data mining, inference, and prediction. Springer Science & Business Media.</p>
+                        <a href="https://web.stanford.edu/~hastie/ElemStatLearn/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          Free Online Version →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Online Resources */}
+                  <div>
+                    <h2 className="text-2xl font-bold text-black mb-6">Online Learning Resources</h2>
+                    <div className="space-y-4">
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">Fast.ai</h3>
+                        <p className="text-gray-600 mb-2">Practical deep learning for coders. Free online course with hands-on projects.</p>
+                        <a href="https://www.fast.ai/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          Visit Fast.ai →
+                        </a>
+                      </div>
+                      
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">CS231n: Convolutional Neural Networks for Visual Recognition</h3>
+                        <p className="text-gray-600 mb-2">Stanford University course on deep learning for computer vision.</p>
+                        <a href="http://cs231n.stanford.edu/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          Course Website →
+                        </a>
+                      </div>
+                      
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">Papers With Code</h3>
+                        <p className="text-gray-600 mb-2">The latest in machine learning research with code implementations.</p>
+                        <a href="https://paperswithcode.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          Browse Papers →
+                        </a>
+                      </div>
+                      
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">Hugging Face</h3>
+                        <p className="text-gray-600 mb-2">Open-source platform for machine learning models and datasets.</p>
+                        <a href="https://huggingface.co/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          Explore Models →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Programming Resources */}
+                  <div>
+                    <h2 className="text-2xl font-bold text-black mb-6">Programming & Implementation</h2>
+                    <div className="space-y-4">
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">PyTorch Documentation</h3>
+                        <p className="text-gray-600 mb-2">Official PyTorch documentation and tutorials for deep learning implementation.</p>
+                        <a href="https://pytorch.org/docs/stable/index.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          PyTorch Docs →
+                        </a>
+                      </div>
+                      
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">TensorFlow Documentation</h3>
+                        <p className="text-gray-600 mb-2">Google's machine learning platform documentation and guides.</p>
+                        <a href="https://www.tensorflow.org/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          TensorFlow Docs →
+                        </a>
+                      </div>
+                      
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">Jupyter Notebooks</h3>
+                        <p className="text-gray-600 mb-2">Interactive computing environment for data science and machine learning.</p>
+                        <a href="https://jupyter.org/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          Jupyter Project →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Research Communities */}
+                  <div>
+                    <h2 className="text-2xl font-bold text-black mb-6">Research Communities</h2>
+                    <div className="space-y-4">
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">arXiv</h3>
+                        <p className="text-gray-600 mb-2">Open access repository of electronic preprints in computer science, mathematics, and physics.</p>
+                        <a href="https://arxiv.org/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          Browse arXiv →
+                        </a>
+                      </div>
+                      
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">Google Scholar</h3>
+                        <p className="text-gray-600 mb-2">Academic search engine for scholarly literature across disciplines.</p>
+                        <a href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          Search Scholar →
+                        </a>
+                      </div>
+                      
+                      <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="font-bold text-black mb-2">GitHub</h3>
+                        <p className="text-gray-600 mb-2">Platform for hosting and collaborating on machine learning projects and research code.</p>
+                        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">
+                          Explore GitHub →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Site Assets & Resources */}
+                  <div>
+                    <h2 className="text-2xl font-bold text-black mb-6">Site Assets & Resources</h2>
+                    <p className="text-gray-600 mb-6">Images and graphics used in the development of this website.</p>
+                    
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <h3 className="font-bold text-black mb-4">Images & Graphics</h3>
+                      <div className="space-y-2">
+                        <a href="https://victorzhou.com/series/neural-networks-from-scratch/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline block">Neural Networks from Scratch</a>
+                        <a href="https://opensource.legal/projects/Pytorch" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline block">PyTorch Legal</a>
+                        <a href="https://heidloff.net/article/foundation-models-transformers-bert-and-gpt/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline block">Foundation Models Transformers</a>
+                        <a href="https://ankittaxak5713.medium.com/vision-transformers-part-4-918311521bbb" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline block">Vision Transformers</a>
+                        <a href="https://docs.flutter.dev/get-started" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline block">Flutter Documentation</a>
+                        <a href="https://www.phaedrasolutions.com/blog/top-generative-ai-companies" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline block">Top Generative AI Companies</a>
+                        <a href="https://www.ox.ac.uk/admissions/graduate/colleges/balliol-college" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline block">Balliol College - Oxford</a>
+                        <a href="https://www.balliol.ox.ac.uk/current-members/accommodation-undergraduates" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline block">Balliol Accommodation</a>
+                        <a href="https://en.wikipedia.org/wiki/File:Balliol_College_Dining_Hall,_Oxford_-_Diliff.jpg" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline block">Balliol Dining Hall Image</a>
+                        <a href="https://www.balliol.ox.ac.uk/news/2019/may/balliols-jcr-is-refurbished" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline block">Balliol JCR Refurbishment</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        );
+      
       default:
         return (
           <>
@@ -1261,6 +1498,14 @@ function App() {
             Accommodation
           </button>
           <button 
+            onClick={() => setActiveTab('references')}
+            className={`text-base font-medium transition-colors ${
+              activeTab === 'references' ? 'text-blue-600' : 'text-gray-600 hover:text-black'
+            }`}
+          >
+            References
+          </button>
+          <button 
             onClick={() => setActiveTab('contact')}
             className={`text-base font-medium transition-colors ${
               activeTab === 'contact' ? 'text-blue-600' : 'text-gray-600 hover:text-black'
@@ -1327,6 +1572,14 @@ function App() {
             <div>
               <h3 className="font-bold text-white mb-4">Support</h3>
               <ul className="space-y-2 text-gray-400">
+                <li>
+                  <button 
+                    onClick={() => setActiveTab('references')}
+                    className="hover:text-white transition-colors"
+                  >
+                    References
+                  </button>
+                </li>
                 <li>
                   <button 
                     onClick={() => setActiveTab('contact')}
