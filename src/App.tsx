@@ -1130,9 +1130,9 @@ function App() {
         return (
           <>
             {/* Hero Section */}
-            <main className="px-6 md:px-12 pt-16 pb-24">
+            <main className="px-4 sm:px-6 md:px-12 pt-8 sm:pt-16 pb-16 sm:pb-24">
               <div className="max-w-4xl">
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-8">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6 sm:mb-8">
                   <span className="text-black">Let's </span>
                   <span className="text-gray-400">kickstart</span>
                   <br />
@@ -1142,35 +1142,35 @@ function App() {
                   <span className="text-black">with OASIS.</span>
                 </h1>
 
-                <div className="mb-12">
-                  <p className="text-gray-600 text-2xl leading-relaxed mb-2 flex flex-wrap items-baseline">
-                    <span>Two week AI intensive for 14 - 18 year olds at the University of Oxford.&nbsp;&nbsp;</span>
+                <div className="mb-8 sm:mb-12">
+                  <p className="text-gray-600 text-lg sm:text-xl md:text-2xl leading-relaxed mb-2">
+                    <span>Two week AI intensive for 14 - 18 year olds at the University of Oxford.</span>
                   </p>
-                  <p className="text-gray-600 text-2xl leading-relaxed">
+                  <p className="text-gray-600 text-lg sm:text-xl md:text-2xl leading-relaxed">
                     Taught by University of Oxford Researchers.
                   </p>
                 </div>
 
-                <button className="group bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full flex items-center space-x-3 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-                  <span className="font-medium text-lg">Apply Now</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <button className="group bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full flex items-center space-x-2 sm:space-x-3 transition-all duration-300 transform hover:scale-105 hover:shadow-lg w-full sm:w-auto">
+                  <span className="font-medium text-base sm:text-lg">Apply Now</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
               </div>
             </main>
 
             {/* Side by Side Section */}
-            <section className="px-6 md:px-12 py-16">
+            <section className="px-4 sm:px-6 md:px-12 py-12 sm:py-16">
               <div className="max-w-6xl mx-auto">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
                   <div className="space-y-6">
                     <div>
                       <p className="text-gray-400 text-base font-medium mb-6 tracking-wider uppercase">What We Do</p>
-                      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight mb-8">
+                      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight mb-6 sm:mb-8">
                         Preparing the Next Generation of AI Engineers
                       </h2>
                     </div>
                     
-                    <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
+                    <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-gray-600 leading-relaxed">
                       <p>
                         In 2017, Google released The Transformer (shown right). This model sparked the AI revolution 
                         we are witnessing. At OASIS, we aim to 
@@ -1456,23 +1456,23 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       {/* Navigation */}
-      <nav className="flex items-center justify-between px-6 md:px-12 py-6">
+      <nav className="flex items-center justify-between px-4 sm:px-6 md:px-12 py-4 sm:py-6">
         <div className="flex items-center space-x-2">
           <img 
             src="/images/wave1.png" 
             // src="/images/logo8.png" 
             alt="Resize Logo" 
-            className="w-8 h-8 object-contain rounded-lg"
+            className="w-6 h-6 sm:w-8 sm:h-8 object-contain rounded-lg"
           />
           <button 
             onClick={() => setActiveTab('home')}
-            className="text-xl font-bold text-black hover:text-gray-700 transition-colors"
+            className="text-lg sm:text-xl font-bold text-black hover:text-gray-700 transition-colors"
           >
             OASIS
           </button>
         </div>
         
-        <div className="flex items-center space-x-8">
+        <div className="hidden sm:flex items-center space-x-4 lg:space-x-8">
           <button 
             onClick={() => setActiveTab('vision')}
             className={`text-base font-medium transition-colors ${
@@ -1514,14 +1514,21 @@ function App() {
             Contact
           </button>
         </div>
+        
+        {/* Mobile Menu Button */}
+        <button className="sm:hidden text-gray-600 hover:text-black">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </nav>
 
       {renderContent()}
       
       {/* Footer */}
-      <footer className="bg-gray-900 text-white px-6 md:px-12 py-12">
+      <footer className="bg-gray-900 text-white px-4 sm:px-6 md:px-12 py-8 sm:py-12">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
                 <img 
@@ -1531,14 +1538,14 @@ function App() {
                 />
                 <span className="text-xl font-bold">OASIS</span>
               </div>
-              <p className="text-gray-400 leading-relaxed max-w-md">
+              <p className="text-gray-400 leading-relaxed max-w-md text-sm sm:text-base">
                 Preparing the next generation of AI engineers through intensive, hands-on learning experiences at Oxford University.
               </p>
             </div>
             
             <div>
-              <h3 className="font-bold text-white mb-4">Program</h3>
-              <ul className="space-y-2 text-gray-400">
+              <h3 className="font-bold text-white mb-3 sm:mb-4 text-sm sm:text-base">Program</h3>
+              <ul className="space-y-1 sm:space-y-2 text-gray-400 text-sm sm:text-base">
                 <li>
                   <button 
                     onClick={() => setActiveTab('vision')}
@@ -1570,8 +1577,8 @@ function App() {
             </div>
             
             <div>
-              <h3 className="font-bold text-white mb-4">Support</h3>
-              <ul className="space-y-2 text-gray-400">
+              <h3 className="font-bold text-white mb-3 sm:mb-4 text-sm sm:text-base">Support</h3>
+              <ul className="space-y-1 sm:space-y-2 text-gray-400 text-sm sm:text-base">
                 <li>
                   <button 
                     onClick={() => setActiveTab('references')}
@@ -1600,7 +1607,7 @@ function App() {
             </div>
           </div>
           
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+          <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-400 text-sm sm:text-base">
             <p>&copy; 2025 OASIS. All rights reserved.</p>
           </div>
         </div>
