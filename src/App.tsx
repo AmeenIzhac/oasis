@@ -1471,7 +1471,7 @@ function App() {
             className="w-6 h-6 sm:w-8 sm:h-8 object-contain rounded-lg"
           />
           <button 
-            onClick={() => setActiveTab('home')}
+            onClick={() => handleTabChange('home')}
             className="text-lg sm:text-xl font-bold text-black hover:text-gray-700 transition-colors"
           >
             OASIS
@@ -1480,7 +1480,7 @@ function App() {
         
         <div className="hidden sm:flex items-center space-x-4 lg:space-x-8">
           <button 
-            onClick={() => setActiveTab('vision')}
+            onClick={() => handleTabChange('vision')}
             className={`text-base font-medium transition-colors ${
               activeTab === 'vision' ? 'text-blue-600' : 'text-gray-600 hover:text-black'
             }`}
@@ -1488,7 +1488,7 @@ function App() {
             Vision
           </button>
           <button 
-            onClick={() => setActiveTab('curriculum')}
+            onClick={() => handleTabChange('curriculum')}
             className={`text-base font-medium transition-colors ${
               activeTab === 'curriculum' ? 'text-blue-600' : 'text-gray-600 hover:text-black'
             }`}
@@ -1496,7 +1496,7 @@ function App() {
             Curriculum
           </button>
           <button 
-            onClick={() => setActiveTab('accommodation')}
+            onClick={() => handleTabChange('accommodation')}
             className={`text-base font-medium transition-colors ${
               activeTab === 'accommodation' ? 'text-blue-600' : 'text-gray-600 hover:text-black'
             }`}
@@ -1504,7 +1504,7 @@ function App() {
             Accommodation
           </button>
           <button 
-            onClick={() => setActiveTab('references')}
+            onClick={() => handleTabChange('references')}
             className={`text-base font-medium transition-colors ${
               activeTab === 'references' ? 'text-blue-600' : 'text-gray-600 hover:text-black'
             }`}
@@ -1512,7 +1512,7 @@ function App() {
             References
           </button>
           <button 
-            onClick={() => setActiveTab('contact')}
+            onClick={() => handleTabChange('contact')}
             className={`text-base font-medium transition-colors ${
               activeTab === 'contact' ? 'text-blue-600' : 'text-gray-600 hover:text-black'
             }`}
@@ -1522,12 +1522,63 @@ function App() {
         </div>
         
         {/* Mobile Menu Button */}
-        <button className="sm:hidden text-gray-600 hover:text-black">
+        <button 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="sm:hidden text-gray-600 hover:text-black"
+        >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </nav>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="sm:hidden bg-white border-t border-gray-200 shadow-lg">
+          <div className="px-4 py-2 space-y-1">
+            <button 
+              onClick={() => handleTabChange('vision')}
+              className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                activeTab === 'vision' ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-black hover:bg-gray-50'
+              }`}
+            >
+              Vision
+            </button>
+            <button 
+              onClick={() => handleTabChange('curriculum')}
+              className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                activeTab === 'curriculum' ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-black hover:bg-gray-50'
+              }`}
+            >
+              Curriculum
+            </button>
+            <button 
+              onClick={() => handleTabChange('accommodation')}
+              className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                activeTab === 'accommodation' ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-black hover:bg-gray-50'
+              }`}
+            >
+              Accommodation
+            </button>
+            <button 
+              onClick={() => handleTabChange('references')}
+              className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                activeTab === 'references' ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-black hover:bg-gray-50'
+              }`}
+            >
+              References
+            </button>
+            <button 
+              onClick={() => handleTabChange('contact')}
+              className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                activeTab === 'contact' ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-black hover:bg-gray-50'
+              }`}
+            >
+              Contact
+            </button>
+          </div>
+        </div>
+      )}
 
       {renderContent()}
       
@@ -1554,7 +1605,7 @@ function App() {
               <ul className="space-y-1 sm:space-y-2 text-gray-400 text-sm sm:text-base">
                 <li>
                   <button 
-                    onClick={() => setActiveTab('vision')}
+                    onClick={() => handleTabChange('vision')}
                     className="hover:text-white transition-colors"
                   >
                     Vision
@@ -1562,7 +1613,7 @@ function App() {
                 </li>
                 <li>
                   <button 
-                    onClick={() => setActiveTab('curriculum')}
+                    onClick={() => handleTabChange('curriculum')}
                     className="hover:text-white transition-colors"
                   >
                     Curriculum
@@ -1570,7 +1621,7 @@ function App() {
                 </li>
                 <li>
                   <button 
-                    onClick={() => setActiveTab('accommodation')}
+                    onClick={() => handleTabChange('accommodation')}
                     className="hover:text-white transition-colors"
                   >
                     Accommodation
@@ -1587,7 +1638,7 @@ function App() {
               <ul className="space-y-1 sm:space-y-2 text-gray-400 text-sm sm:text-base">
                 <li>
                   <button 
-                    onClick={() => setActiveTab('references')}
+                    onClick={() => handleTabChange('references')}
                     className="hover:text-white transition-colors"
                   >
                     References
@@ -1595,7 +1646,7 @@ function App() {
                 </li>
                 <li>
                   <button 
-                    onClick={() => setActiveTab('contact')}
+                    onClick={() => handleTabChange('contact')}
                     className="hover:text-white transition-colors"
                   >
                     Contact Us
@@ -1603,7 +1654,7 @@ function App() {
                 </li>
                 <li>
                   <button 
-                    onClick={() => setActiveTab('privacy')}
+                    onClick={() => handleTabChange('privacy')}
                     className="hover:text-white transition-colors"
                   >
                     Privacy Policy
