@@ -4,6 +4,7 @@ import emailjs from '@emailjs/browser';
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,6 +35,11 @@ function App() {
       ...prev,
       [name]: value
     }));
+  };
+
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+    setIsMobileMenuOpen(false); // Close mobile menu when tab changes
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
