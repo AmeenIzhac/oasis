@@ -1151,7 +1151,7 @@ function App() {
                   </p>
                 </div>
 
-                <button className="group bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full flex items-center space-x-2 sm:space-x-3 transition-all duration-300 transform hover:scale-105 hover:shadow-lg w-full sm:w-auto">
+                <button className="group bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full flex items-center space-x-2 sm:space-x-3 transition-all duration-300 transform hover:scale-105 hover:shadow-lg w-fit">
                   <span className="font-medium text-base sm:text-lg">Apply Now</span>
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
