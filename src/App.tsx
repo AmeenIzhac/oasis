@@ -412,8 +412,8 @@ function App() {
                     This summer school is not a casual introduction, nor a light exploration of possibilities. 
                     It is an intensive, structured journey through AI—beginning with the fundamental principles
                     and advancing to state-of-the-art research in Machine Learning. For students who
-                    aspire to shape the future of technology, the course is designed to equips participants 
-                    with the knowledge and skills essential for a serious career in AI.
+                    aspire to shape the future of technology, this course is designed to equip participants 
+                    with the knowledge and skills essential for a thriving career in AI.
                     </p>
                   </div>
                                     
@@ -1589,7 +1589,7 @@ function App() {
             <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
                 <img 
-                  src="/images/logo8.png" 
+                  src="/images/wave1.png" 
                   alt="OASIS Logo" 
                   className="w-8 h-8 object-contain rounded-lg filter invert"
                 />
