@@ -78,7 +78,7 @@ function App() {
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message,
-        to_email: 'ameen.izhac@gmail.com' // Your email address
+        to_email: 'start@oasissummerschool.com' // Your email address
       };
 
       await emailjs.send(
@@ -224,7 +224,7 @@ function App() {
                       If you have any questions about this Privacy Policy or our data practices, please contact us:
                     </p>
                     <div className="bg-gray-50 p-6 rounded-lg">
-                      <p><strong>Email:</strong> info@oasis.com</p>
+                      <p><strong>Email:</strong> start@oasissummerschool.com</p>
                       <p><strong>Address:</strong> OASIS Privacy Officer<br />
                       Wolfson Building<br />
                       7 Parks Road<br />
@@ -806,18 +806,20 @@ function App() {
                     <div className="space-y-4">
                       <div>
                         <h3 className="font-bold text-black">Email</h3>
-                        <p className="text-gray-600">info@oasis.com</p>
+                        <p className="text-gray-600">start@oasissummerschool.com</p>
                       </div>
+                      
                       <div>
                         <h3 className="font-bold text-black">Phone</h3>
-                        <p className="text-gray-600">+44 (0) 7506 266 120</p>
+                        <p className="text-gray-600">+44 (0) 7443 494 601</p>
                       </div>
                       <div>
-                        <h3 className="font-bold text-black">Office</h3>
+                        <h3 className="font-bold text-black">Learning Hub</h3>
                         <p className="text-gray-600">
-                          123 Design Street<br />
-                          Creative District<br />
-                          New York, NY 10001
+                          Robert Hooke Building<br />
+                          Parks Rd<br />
+                          OX1 3PP<br />
+                          Oxford, UK
                         </p>
                       </div>
                     </div>
