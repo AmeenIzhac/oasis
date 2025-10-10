@@ -816,9 +816,9 @@ function App() {
                       <div>
                         <h3 className="font-bold text-black">Learning Hub</h3>
                         <p className="text-gray-600">
-                          Robert Hooke Building<br />
-                          Parks Rd<br />
-                          OX1 3PP<br />
+                          Wolfson Building<br />
+                          7 Parks Rd<br />
+                          OX1 3QD<br />
                           Oxford, UK
                         </p>
                       </div>
